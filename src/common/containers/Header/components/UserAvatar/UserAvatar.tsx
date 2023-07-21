@@ -6,8 +6,6 @@ import { ISettingsModalProps } from '../SettingsModal/SettingsModal';
 import Dropdown from '@common/components/Dropdown';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
 import { faCog, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { faUser as dummyUser } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StyledAvatar } from './styled';
 
 const UserAvatar: React.FC = () => {
@@ -49,11 +47,14 @@ const UserAvatar: React.FC = () => {
   return (
     <>
       <Dropdown menuItems={menuItems}>
-        <StyledAvatar
-          size={40}
-          icon={<FontAwesomeIcon icon={dummyUser} />}
-          src={userProfile.pictureURL ? userProfile.pictureURL : undefined}
-        />
+        <StyledAvatar size={40} src={userProfile.pictureURL ? userProfile.pictureURL : undefined}>
+          {!userProfile.pictureURL
+            ? userProfile.username
+                .toUpperCase()
+                .split(' ')
+                .map((i) => i.charAt(0))
+            : null}
+        </StyledAvatar>
       </Dropdown>
 
       {settingsModalConfig ? <SettingsModal {...settingsModalConfig} /> : null}
