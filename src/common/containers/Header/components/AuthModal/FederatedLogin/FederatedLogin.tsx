@@ -1,5 +1,5 @@
 import { useAuth } from '@common/contexts/AuthContext';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useIntl } from 'react-intl';
@@ -12,11 +12,12 @@ interface IProps {
 
 const FederatedLogin: React.FC<IProps> = ({ closeModal }) => {
   const intl = useIntl();
-  const { signInWithGoogle, signInWithFacebook } = useAuth();
+  const { signInWithGoogle } = useAuth();
 
   return (
     <StyledFullWidthSpace direction="vertical" size={16}>
-      <Button
+      {/* fixme: fix Facebook live app then uncomment */}
+      {/* <Button
         onClick={() => {
           closeModal();
           signInWithFacebook();
@@ -24,7 +25,7 @@ const FederatedLogin: React.FC<IProps> = ({ closeModal }) => {
         block
         icon={<FontAwesomeIcon icon={faFacebook} />}
         text={intl.formatMessage({ id: 'federatedLogin.facebook' })}
-      />
+      /> */}
 
       <Button
         onClick={() => {

@@ -33,8 +33,8 @@ const App: React.FC = () => {
   const { darkMode } = useContext(ThemeContext);
   const siteLanguage = useSelector(({ layout }: ILayoutOwnState) => layout.siteLanguage);
 
-  const [language, setLanguage] = useState<ITranslationConfig['locale']>(Language.en);
-  const [locale, setLocale] = useState<Locale>(enUS);
+  const [language, setLanguage] = useState<ITranslationConfig['locale']>(Language.pl);
+  const [locale, setLocale] = useState<Locale>(plPL);
 
   const appLocale = useMemo(() => (AppLocale as any)[language], [language]);
   dayjs.locale(language);

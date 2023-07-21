@@ -3,6 +3,6 @@ export const Paths = {
   Welcome: '/witaj',
   AccessDenied: '/access-denied',
   PageNotFound: '/page-not-found',
-  Entry: '/wpis',
+  Entry: '/wpisy',
   Memories: '/album-wspomnien',
 };

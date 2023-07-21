@@ -7,7 +7,7 @@ import { StyledColorTextLink } from '@common/components/Link/styled';
 const Footer: React.FC = () => {
   const intl = useIntl();
 
-  // todo: update my last name & privacypolicy
+  // todo: update my last name
   return (
     <StyledFooter>
       <Space direction="vertical" size={4}>
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
         <Space size={10}>
           <StyledColorTextLink
             as="a"
-            href=""
+            href="https://www.freeprivacypolicy.com/live/90bcffd5-ffa3-40dd-835b-3fe0fd26985f"
             target="_blank"
             rel="noreferrer"
           >

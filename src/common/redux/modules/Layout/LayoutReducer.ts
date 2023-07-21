@@ -6,7 +6,7 @@ import { LayoutTypes } from './LayoutTypes';
 
 const initialState: ILayoutState = {
   hideContentPadding: false,
-  siteLanguage: Language.en
+  siteLanguage: Language.pl
 };
 
 const LayoutReducer = (state = initialState, action: LayoutDispatchUnion): ILayoutState =>

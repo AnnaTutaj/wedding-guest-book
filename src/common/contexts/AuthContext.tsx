@@ -9,7 +9,8 @@ import {
   FacebookAuthProvider,
   signOut,
   getAdditionalUserInfo,
-  AdditionalUserInfo
+  AdditionalUserInfo,
+  signInAnonymously
 } from 'firebase/auth';
 import { User as FirebaseUser } from 'firebase/auth';
 import { UserCredential as FirebaseUserCredential } from 'firebase/auth';

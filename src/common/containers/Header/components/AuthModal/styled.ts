@@ -5,6 +5,7 @@ export const StyledContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  margin-bottom: ${({ theme }) => theme.antd.paddingXS}px;
 `;
 
 export const StyledTextContainer = styled.div`
