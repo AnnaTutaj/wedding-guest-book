@@ -51,6 +51,8 @@
   "header.logout": "Log out",
   "header.register": "Introduce yourself",
   "header.settings": "Settings",
+  "header.entries": "Wpisy",
+  "header.memories": "Album wspomnień",
   "home.ending.button": "My pleasure",
   "home.ending.title": "Thank you!",
   "home.header.button": "Sign in!",
