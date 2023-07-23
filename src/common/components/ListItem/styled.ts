@@ -3,7 +3,6 @@ import Paragraph from 'antd/es/typography/Paragraph';
 import Title from 'antd/es/typography/Title';
 import styled from 'styled-components';
 import Dropdown from '@common/components/Dropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CategoryColorType } from '@common/containers/App/ColorPalette';
 
 export const StyledListItem = styled(List.Item)<{ $backgroundColor: CategoryColorType }>`
@@ -37,7 +36,7 @@ export const StyledTitle = styled(Title)`
   }
 `;
 
-export const StyledDescriptionParagraph = styled(Paragraph)`
+export const StyledContentParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.antd.colorWhite};
   white-space: pre-line;
 `;
@@ -61,13 +60,4 @@ export const StyledDropdownIconContainer = styled.div<{ $colorHover: CategoryCol
   &:hover {
     background-color: ${({ theme, $colorHover }) => theme.layout.colorsCategoryHover[$colorHover]};
   }
-`;
-
-export const StyledVisibilityIconContainer = styled.div`
-  padding: 6px 0 5px 16px;
-`;
-
-export const StyledVisibilityIcon = styled(FontAwesomeIcon)`
-  color: ${({ theme }) => theme.antd.colorWhite};
-  font-size: 16px;
 `;

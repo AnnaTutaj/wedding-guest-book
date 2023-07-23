@@ -14,6 +14,7 @@ import { StyledContent } from './styled';
 
 const PageUnderConstruction = lazy(() => import('@common/components/PageUnderConstruction'));
 const Home = lazy(() => import('@modules/Home'));
+const Entry = lazy(() => import('@modules/Entry'));
 
 //todo add route to PageNotFound, AccessDenied
 
@@ -45,7 +46,7 @@ const Main: React.FC = () => {
               path={Paths.Entry}
               element={
                 <PrivateRoute>
-                  <PageUnderConstruction title="Entries page" />
+                  <Entry />
                 </PrivateRoute>
               }
             ></Route>
