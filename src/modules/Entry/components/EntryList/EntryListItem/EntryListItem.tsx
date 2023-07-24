@@ -1,6 +1,5 @@
-import { Col, Row } from 'antd';
+import { Col } from 'antd';
 import React from 'react';
-import dayjs from 'dayjs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '@common/util/firebase';
@@ -10,20 +9,18 @@ import { useIntl } from 'react-intl';
 import { DropdownMenuKey } from '@common/constants/DropdownMenuKey';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
 import useConfirmModal from '@common/hooks/useConfirmModal';
-import ImagePreview from '@common/components/ImagePreview';
 import { useAuth } from '@common/contexts/AuthContext';
 import { StyledEllipsisContainer } from '@common/styled';
 import {
-  StyledDate,
   StyledContentParagraph,
   StyledDropDownCol,
   StyledDropdown,
   StyledDropdownIconContainer,
   StyledListItem,
-  StyledListItemRow,
-  StyledSmallText,
-  StyledTitle
+  StyledListItemRow
 } from '@common/components/ListItem/styled';
+import { StyledCreatedAt, StyledCreatedByUsername } from './styled';
+import { buildDate } from '@common/helpers/DateHelper';
 
 interface IProps {
   entry: IEntryModel;
@@ -76,32 +73,21 @@ const EntryListItem: React.FC<IProps> = ({ entry, removeEntry, updateEntry }) =>
   ];
 
   const miliseconds = entry.createdAt.seconds * 1000;
-  const monthShort = dayjs(miliseconds).format('MMM');
-  const monthDay = dayjs(miliseconds).format('D');
-  const weekDayShort = dayjs(miliseconds).format('ddd');
 
   return (
     <>
       <StyledListItem $backgroundColor={entry.color}>
         <StyledListItemRow wrap={false}>
-          <Col>
-            <StyledDate>
-              <StyledSmallText>{monthShort}</StyledSmallText>
-              <div>{monthDay}</div>
-              <StyledSmallText>{weekDayShort}</StyledSmallText>
-            </StyledDate>
-          </Col>
           <Col flex={1}>
-            <StyledTitle level={5}>{entry.createdByUsername}</StyledTitle>
-            {entry.imageURLs.length ? <ImagePreview srcs={entry.imageURLs} /> : null}
+            <StyledCreatedAt>{buildDate(miliseconds).format('LLL')}</StyledCreatedAt>
+            {/* {entry.imageURLs.length ? <ImagePreview srcs={entry.imageURLs} /> : null} */}
             <StyledContentParagraph>{entry.content}</StyledContentParagraph>
-            <Row gutter={10}>
-              {entry.tags.map((tag) => (
-                <StyledEllipsisContainer as={Col} key={tag}>
-                  <small>#{tag}</small>
-                </StyledEllipsisContainer>
-              ))}
-            </Row>
+            {entry.tags.map((tag) => (
+              <StyledEllipsisContainer key={tag}>
+                <small>#{tag}</small>
+              </StyledEllipsisContainer>
+            ))}
+            <StyledCreatedByUsername>{entry.createdByUsername}</StyledCreatedByUsername>
           </Col>
 
           {entry.createdByUid === userProfile.uid ? (

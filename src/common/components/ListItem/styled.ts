@@ -29,10 +29,11 @@ export const StyledSmallText = styled.small`
   text-transform: uppercase;
 `;
 
-export const StyledTitle = styled(Title)`
+export const StyledTitle = styled(Paragraph)`
   && {
     margin-top: 0;
     color: ${({ theme }) => theme.antd.colorWhite};
+    font-family: 'Ms Madi', cursive;
   }
 `;
 

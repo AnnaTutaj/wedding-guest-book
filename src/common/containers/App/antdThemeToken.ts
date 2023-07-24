@@ -8,7 +8,7 @@ export const antdThemeToken = (darkMode: boolean, userTheme: IUserTheme): Partia
   const colorPalette = userColorPalette(userTheme);
 
   return {
-    fontFamily: "'Open Sans', sans-serif",
+    fontFamily: "'Roboto', sans-serif",
     fontSize: 16,
     colorPrimary: userTheme.colorPrimary || colorPalette.primaryColor.main,
     colorError: '#c0293b',
