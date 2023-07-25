@@ -1,6 +1,5 @@
 import { Col, List, Row } from 'antd';
 import Paragraph from 'antd/es/typography/Paragraph';
-import Title from 'antd/es/typography/Title';
 import styled from 'styled-components';
 import Dropdown from '@common/components/Dropdown';
 import { CategoryColorType } from '@common/containers/App/ColorPalette';
