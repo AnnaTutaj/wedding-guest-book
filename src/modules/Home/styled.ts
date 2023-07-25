@@ -1,21 +1,29 @@
 import { Space } from 'antd';
 import styled from 'styled-components';
-const gradientColors =
-  '#f28d77, #eb8078, #e27379, #d7677b, #cb5c7e, #bd5380, #ad4b82, #9c4484, #893f85, #743b85, #5c3884, #413582';
-const homeHeaderGradient = `radial-gradient(circle at 80% 10%, ${gradientColors})`;
+const gradientColors = '#cbff9e, #e4e980, #f8d170, #ffb86f, #ff9f78, #ff8989, #f9799e, #de71b2';
 const homeEndingGradient = `radial-gradient(circle at 10% 80%, ${gradientColors})`;
 
-export const StyledHeaderContainer = styled.div`
+export const StyledHeaderImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  height: calc(100vh - ${({ theme }) => theme.layout.headerHeight});
+  min-height: 450px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+export const StyledHeaderContentContainer = styled.div`
+  height: 70%;
+  padding: 0 30px;
+  color: ${({ theme }) => theme.antd.colorWhite};
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: calc(100vh - ${({ theme }) => theme.layout.headerHeight});
-  min-height: 450px;
-  padding: 30px;
-  color: ${({ theme }) => theme.antd.colorWhite};
+  justify-content: space-between;
   text-align: center;
-  background: ${homeHeaderGradient};
+  margin-bottom: 30px;
 `;
 
 export const StyledEndingContainer = styled.div`
@@ -31,14 +39,21 @@ export const StyledEndingContainer = styled.div`
   background: ${homeEndingGradient};
 `;
 
+export const StyledTitleSpace = styled(Space)`
+  background: rgb(0 0 0 / 25%);
+  padding: 20px;
+  border-radius: 50px;
+`;
+
 export const StyledHeaderTitle = styled.div`
   font-weight: 900;
   font-size: clamp(40px, min(10vw, 10vh), 90px);
   letter-spacing: 0.1em;
+  transform: scaleY(1.3);
+  font-family: 'Ms Madi', cursive;
 `;
 
 export const StyledHeaderSubtitle = styled.div`
-  margin-bottom: 40px;
   font-size: 1.5rem;
   letter-spacing: 0.1em;
 `;
@@ -50,16 +65,4 @@ export const StyledContentContainer = styled.div`
 export const SectionEndingTitle = styled.div`
   margin-bottom: 20px;
   font-size: 1.7em;
-`;
-
-export const StyledLogoImage = styled.img`
-  height: 200px;
-
-  @media (width <= 768px) {
-    height: 150px;
-  }
-`;
-
-export const StyledHeaderGuestBookSpace = styled(Space)`
-  margin-bottom: 20px;
 `;

@@ -47,7 +47,7 @@ interface IColorPalette {
 }
 
 const DefaultColorPalette: IColorPalette = {
-  primaryColor: generateColorShades('#8236d5'),
+  primaryColor: generateColorShades('#B24C6D'),
   secondaryColor: generateColorShades('#d5b436'),
   categoryColors: {
     default: '#86cfc4',

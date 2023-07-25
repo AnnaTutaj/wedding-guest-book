@@ -1,10 +1,5 @@
-import { Space } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import guestBookLogo from '@assets/guest_book_logo.svg';
-import LayoutActions from '@common/redux/modules/Layout/LayoutActions';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@common/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -14,13 +9,19 @@ import {
   SectionEndingTitle,
   StyledContentContainer,
   StyledEndingContainer,
-  StyledHeaderContainer,
-  StyledHeaderGuestBookSpace,
+  StyledHeaderContentContainer,
+  StyledHeaderImageContainer,
   StyledHeaderSubtitle,
   StyledHeaderTitle,
-  StyledLogoImage
+  StyledTitleSpace
 } from './styled';
 import AuthModal, { IAuthModalProps } from '@common/containers/Header/components/AuthModal/AuthModal';
+import LayoutActions from '@common/redux/modules/Layout/LayoutActions';
+import aiNarrow from '@assets/aiNarrow.jpg';
+import { buildDate } from '@common/helpers/DateHelper';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Space } from 'antd';
 
 const Home: React.FC = () => {
   const intl = useIntl();
@@ -31,6 +32,8 @@ const Home: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
 
   const { userProfile } = useAuth();
+
+  const date = '2023-09-02 16:00';
 
   useEffect(() => {
     LayoutActions.setHidePaddingAction(true)(dispatch);
@@ -59,27 +62,24 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <StyledHeaderContainer>
-        <StyledHeaderGuestBookSpace size={16}>
-          <StyledLogoImage src={guestBookLogo} alt="Wedding Guest Book Logo" />
-          <StyledHeaderTitle>Wedding Guest Book</StyledHeaderTitle>
-        </StyledHeaderGuestBookSpace>
-
-        <StyledHeaderSubtitle>{intl.formatMessage({ id: 'home.header.subtitle' })}</StyledHeaderSubtitle>
-        <Space direction="vertical">
-          <Button type="primary" onClick={onClick} text={intl.formatMessage({ id: 'home.header.button' })} />
-          {intl.formatMessage({ id: 'common.or' }).toLowerCase()}
-          <Button
-            type="text"
-            onClick={executeScroll}
-            icon={<FontAwesomeIcon icon={faChevronDown} />}
-            text={intl.formatMessage({ id: 'home.header.discoverMore' })}
-          />
-        </Space>
-      </StyledHeaderContainer>
-      <StyledContentContainer ref={divRef}>
-        {/* todo: content */}
-      </StyledContentContainer>
+      <StyledHeaderImageContainer style={{ backgroundImage: `url('${aiNarrow}')` }}>
+        <StyledHeaderContentContainer>
+          <StyledTitleSpace direction="vertical">
+            <StyledHeaderTitle>{intl.formatMessage({ id: 'home.header.subtitle' })}</StyledHeaderTitle>
+            <StyledHeaderSubtitle>{buildDate(date).format('LL')}</StyledHeaderSubtitle>
+          </StyledTitleSpace>
+          <Space direction="vertical" size="large">
+            <Button type="primary" onClick={onClick} text={intl.formatMessage({ id: 'home.header.button' })} />
+            <Button
+              type="primary"
+              shape="circle"
+              onClick={executeScroll}
+              icon={<FontAwesomeIcon icon={faChevronDown} />}
+            />
+          </Space>
+        </StyledHeaderContentContainer>
+      </StyledHeaderImageContainer>
+      <StyledContentContainer ref={divRef}>{/* todo: content */}</StyledContentContainer>
       <StyledEndingContainer>
         <SectionEndingTitle>{intl.formatMessage({ id: 'home.ending.title' })}</SectionEndingTitle>
 
