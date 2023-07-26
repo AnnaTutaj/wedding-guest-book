@@ -15,7 +15,7 @@ export const StyledHeaderImageContainer = styled.div`
 `;
 
 export const StyledHeaderContentContainer = styled.div`
-  height: 70%;
+  height: 60%;
   padding: 0 30px;
   color: ${({ theme }) => theme.antd.colorWhite};
   display: flex;
@@ -23,7 +23,7 @@ export const StyledHeaderContentContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 `;
 
 export const StyledEndingContainer = styled.div`
