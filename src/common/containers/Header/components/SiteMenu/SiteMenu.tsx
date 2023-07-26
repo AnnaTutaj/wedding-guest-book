@@ -26,7 +26,7 @@ const SiteMenu: React.FC<ISiteMenuProps> = ({ isMobile, userAuth, openRegisterMo
   const items = userAuth
     ? [
         {
-          key: 'entries',
+          key: 'wpisy',
           label: intl.formatMessage({ id: 'header.entries' }),
           onClick: () => {
             navigate(Paths.Entry);
@@ -36,7 +36,7 @@ const SiteMenu: React.FC<ISiteMenuProps> = ({ isMobile, userAuth, openRegisterMo
           }
         },
         {
-          key: 'memories',
+          key: 'album-wspomnien',
           label: intl.formatMessage({ id: 'header.memories' }),
           onClick: () => {
             navigate(Paths.Memories);
