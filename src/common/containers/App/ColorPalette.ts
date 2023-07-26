@@ -50,7 +50,7 @@ const DefaultColorPalette: IColorPalette = {
   primaryColor: generateColorShades('#B24C6D'),
   secondaryColor: generateColorShades('#d5b436'),
   categoryColors: {
-    default: '#86cfc4',
+    default: '#66b24c',
     red: '#b94242',
     fuchsia: '#b94290',
     pink: '#cf86b6',
@@ -65,7 +65,7 @@ const DefaultColorPalette: IColorPalette = {
     gray: '#8a8a8a'
   },
   categoryColorsHover: {
-    default: '#9ed8cf',
+    default: '#7cbd66',
     red: '#c86666',
     fuchsia: '#c866a6',
     pink: '#d89ec4',
