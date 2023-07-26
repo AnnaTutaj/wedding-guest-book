@@ -37,8 +37,11 @@ export const StyledTitle = styled(Paragraph)`
 `;
 
 export const StyledContentParagraph = styled(Paragraph)`
-  color: ${({ theme }) => theme.antd.colorWhite};
-  white-space: pre-line;
+  && {
+    margin-bottom: ${({ theme }) => theme.antd.marginXS}px;
+    color: ${({ theme }) => theme.antd.colorWhite};
+    white-space: pre-line;
+  }
 `;
 
 export const StyledDropDownCol = styled(Col)`

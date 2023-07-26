@@ -10,7 +10,6 @@ import { DropdownMenuKey } from '@common/constants/DropdownMenuKey';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
 import useConfirmModal from '@common/hooks/useConfirmModal';
 import { useAuth } from '@common/contexts/AuthContext';
-import { StyledEllipsisContainer } from '@common/styled';
 import {
   StyledContentParagraph,
   StyledDropDownCol,
@@ -19,7 +18,7 @@ import {
   StyledListItem,
   StyledListItemRow
 } from '@common/components/ListItem/styled';
-import { StyledCreatedAt, StyledCreatedByUsername } from './styled';
+import { StyledCreatedAt, StyledCreatedByUsername, StyledTagCol, StyledTagRow } from './styled';
 import { buildDate } from '@common/helpers/DateHelper';
 
 interface IProps {
@@ -82,11 +81,13 @@ const EntryListItem: React.FC<IProps> = ({ entry, removeEntry, updateEntry }) =>
             <StyledCreatedAt>{buildDate(miliseconds).format('LLL')}</StyledCreatedAt>
             {/* {entry.imageURLs.length ? <ImagePreview srcs={entry.imageURLs} /> : null} */}
             <StyledContentParagraph>{entry.content}</StyledContentParagraph>
-            {entry.tags.map((tag) => (
-              <StyledEllipsisContainer key={tag}>
-                <small>#{tag}</small>
-              </StyledEllipsisContainer>
-            ))}
+            <StyledTagRow gutter={8}>
+              {entry.tags.map((tag) => (
+                <StyledTagCol key={tag}>
+                  <span>#{tag}</span>
+                </StyledTagCol>
+              ))}
+            </StyledTagRow>
             <StyledCreatedByUsername>{entry.createdByUsername}</StyledCreatedByUsername>
           </Col>
 
