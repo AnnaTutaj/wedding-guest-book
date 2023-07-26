@@ -14,6 +14,7 @@ const ThemeProvider = ({ children }: any) => {
   };
 
   const [darkMode, setDarkMode] = useState<boolean>(getDarkMode());
+  const [footerHeight, setFooterHeight] = useState<number>(0); 
 
   useEffect(() => {
     const initialValue = getDarkMode();
@@ -22,7 +23,7 @@ const ThemeProvider = ({ children }: any) => {
     }
   }, [darkMode]);
 
-  return <ThemeContext.Provider value={{ darkMode, setDarkMode }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ darkMode, setDarkMode, footerHeight, setFooterHeight }}>{children}</ThemeContext.Provider>;
 };
 
 export default memo(ThemeProvider) as typeof ThemeProvider;

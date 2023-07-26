@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useContext, useLayoutEffect, useRef } from 'react';
 import { Space } from 'antd';
 import { useIntl } from 'react-intl';
 import { StyledFooter } from './styled';
 import { StyledColorTextLink } from '@common/components/Link/styled';
+import { ThemeContext } from '@common/contexts/Theme/ThemeContext';
 
 const Footer: React.FC = () => {
   const intl = useIntl();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { setFooterHeight } = useContext(ThemeContext);
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (contentRef?.current?.offsetHeight) {
+        setFooterHeight(contentRef.current.offsetHeight);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [setFooterHeight]);
 
   // todo: update my last name
   return (
-    <StyledFooter>
+    <StyledFooter ref={contentRef}>
       <Space direction="vertical" size={4}>
         <span>
           <span>©2023 {intl.formatMessage({ id: 'footer.credits' })} </span>

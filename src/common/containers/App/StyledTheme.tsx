@@ -13,14 +13,14 @@ export interface IProps {
 
 const StyledTheme: React.FC<IProps> = ({ children, customizeColorsPreview }) => {
   const { token } = theme.useToken();
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode, footerHeight } = useContext(ThemeContext);
   const { userProfile } = useAuth();
 
   return (
     <ThemeProvider
       theme={{
         antd: token,
-        layout: layout(darkMode, userProfile.theme)
+        layout: { ...layout(darkMode, userProfile.theme), footerHeight: footerHeight }
       }}
     >
       <GlobalStyle $darkMode={darkMode} />

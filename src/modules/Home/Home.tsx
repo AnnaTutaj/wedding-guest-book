@@ -22,6 +22,7 @@ import { buildDate } from '@common/helpers/DateHelper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Space } from 'antd';
+import WeddingDetail from '@common/constants/WeddingDetail';
 
 const Home: React.FC = () => {
   const intl = useIntl();
@@ -32,8 +33,6 @@ const Home: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
 
   const { userProfile } = useAuth();
-
-  const date = '2023-09-02 16:00';
 
   useEffect(() => {
     LayoutActions.setHidePaddingAction(true)(dispatch);
@@ -66,7 +65,7 @@ const Home: React.FC = () => {
         <StyledHeaderContentContainer>
           <StyledTitleSpace direction="vertical">
             <StyledHeaderTitle>{intl.formatMessage({ id: 'home.header.subtitle' })}</StyledHeaderTitle>
-            <StyledHeaderSubtitle>{buildDate(date).format('LL')}</StyledHeaderSubtitle>
+            <StyledHeaderSubtitle>{buildDate(WeddingDetail.date).format('LL')}</StyledHeaderSubtitle>
           </StyledTitleSpace>
           <Space direction="vertical" size="large">
             <Button type="primary" onClick={onClick} text={intl.formatMessage({ id: 'home.header.button' })} />
