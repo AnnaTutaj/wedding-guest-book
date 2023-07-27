@@ -9,7 +9,7 @@ import { Language, useAuth } from '@common/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '@common/constants/Paths';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
-import guestBookLogo from '@assets/guest_book_logo.svg';
+import guestBookLogo from '@assets/logo_small.jpg';
 import SiteMenu from './components/SiteMenu';
 import { ITranslationConfig } from '@common/lang/config/types';
 import LayoutActions from '@common/redux/modules/Layout/LayoutActions';

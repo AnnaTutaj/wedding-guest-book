@@ -29,6 +29,7 @@ export const StyledLogoContainer = styled.div`
 
   ${StyledLogoImage} {
     height: 40px;
+    border-radius: ${({ theme }) => theme.antd.borderRadius}px;
   }
 `;
 
