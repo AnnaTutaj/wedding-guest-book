@@ -1,6 +1,6 @@
 import { Space } from 'antd';
 import styled from 'styled-components';
-const gradientColors = '#cbff9e, #e4e980, #f8d170, #ffb86f, #ff9f78, #ff8989, #f9799e, #de71b2';
+const gradientColors = '#288275, #388c6f, #4e9667, #699e5c, #86a551, #a6aa48, #c8ad44, #ebad49';
 const homeEndingGradient = `radial-gradient(circle at 10% 80%, ${gradientColors})`;
 
 export const StyledHeaderImageContainer = styled.div`
