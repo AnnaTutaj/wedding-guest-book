@@ -11,7 +11,7 @@ const CountdownValueDisplay: React.FC<IProps> = ({ value, text, colon }) => {
   return (
     <Space align="start">
       <StyledContainer>
-        <StyledValue>{value}</StyledValue>
+        <StyledValue>{Math.abs(value)}</StyledValue>
         <StyledText>{text}</StyledText>
       </StyledContainer>
       {colon ? <StyledValue>:</StyledValue> : null}

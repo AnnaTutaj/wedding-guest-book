@@ -1,16 +1,24 @@
 import React from 'react';
-import Countdown from '@common/components/Countdown/Countdown';
 import WeddingDetail from '@common/constants/WeddingDetail';
 import HomeSectionWrapper from '../HomeSectionWrapper/HomeSectionWrapper';
 import { useIntl } from 'react-intl';
+import { useCountdown } from '@common/hooks/useCountdown';
+import CountdownTimer from '@common/components/Countdown/CountdownTimer/CountdownTimer';
 
 const HomeCountdown: React.FC = () => {
   const intl = useIntl();
+  const { days, hours, minutes, seconds } = useCountdown(WeddingDetail.date);
 
-  //todo: add "Days until we say I do"
+  const isAfterWedding = days + hours + minutes + seconds <= 0;
+
   return (
-    <HomeSectionWrapper coloredBg={false} title={intl.formatMessage({ id: 'home.countdown.title' })}>
-      <Countdown targetDate={WeddingDetail.date} />
+    <HomeSectionWrapper
+      coloredBg={false}
+      title={intl.formatMessage({
+        id: isAfterWedding ? 'home.countdown.titleAfterWedding' : 'home.countdown.titleBeforeWedding'
+      })}
+    >
+      <CountdownTimer days={days} hours={hours} minutes={minutes} seconds={seconds} />
     </HomeSectionWrapper>
   );
 };

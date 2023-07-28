@@ -25,10 +25,24 @@ const useCountdown = (targetDate: string): ICountdown => {
 };
 
 const getReturnValues = (secondDiff: number): ICountdown => {
-  const days = Math.floor(secondDiff / (60 * 60 * 24));
-  const hours = Math.floor((secondDiff % (60 * 60 * 24)) / (60 * 60));
-  const minutes = Math.floor((secondDiff % (60 * 60)) / 60);
-  const seconds = Math.floor(secondDiff % 60);
+  const daysCount = secondDiff / (60 * 60 * 24);
+  const hoursCount = (secondDiff % (60 * 60 * 24)) / (60 * 60);
+  const minutesCount = (secondDiff % (60 * 60)) / 60;
+  const secondsCount = secondDiff % 60;
+
+  if (secondDiff > 0) {
+    const days = Math.floor(daysCount);
+    const hours = Math.floor(hoursCount);
+    const minutes = Math.floor(minutesCount);
+    const seconds = Math.floor(secondsCount);
+
+    return { days, hours, minutes, seconds };
+  }
+
+  const days = Math.ceil(daysCount);
+  const hours = Math.ceil(hoursCount);
+  const minutes = Math.ceil(minutesCount);
+  const seconds = Math.ceil(secondsCount);
 
   return { days, hours, minutes, seconds };
 };
