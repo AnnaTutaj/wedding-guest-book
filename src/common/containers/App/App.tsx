@@ -31,6 +31,7 @@ dayjs.extend(localeData);
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
+dayjs.tz.setDefault('Europe/Warsaw');
 
 const App: React.FC = () => {
   const { userProfile } = useAuth();

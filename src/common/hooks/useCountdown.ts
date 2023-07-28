@@ -9,11 +9,11 @@ export interface ICountdown {
 }
 
 const useCountdown = (targetDate: string): ICountdown => {
-  const [secondDiff, setSecondDiff] = useState<number>(dayjs(targetDate).diff(dayjs(), 'seconds'));
+  const [secondDiff, setSecondDiff] = useState<number>(dayjs.tz(targetDate).diff(dayjs.tz(), 'seconds'));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const seconds = dayjs(targetDate).diff(dayjs(), 'seconds');
+      const seconds = dayjs.tz(targetDate).diff(dayjs.tz(), 'seconds');
 
       setSecondDiff(seconds);
     }, 1000);
