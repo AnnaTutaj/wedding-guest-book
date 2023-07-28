@@ -3,7 +3,7 @@ import { StyledContainer, StyledDescription, StyledTitle } from './styled';
 
 interface IProps {
   coloredBg: boolean;
-  title: string;
+  title?: string;
   description?: JSX.Element;
   children: JSX.Element;
 }
@@ -11,7 +11,7 @@ interface IProps {
 const HomeSectionWrapper: React.FC<IProps> = ({ coloredBg, title, description, children }) => {
   return (
     <StyledContainer $coloredBg={coloredBg}>
-      <StyledTitle $description={!!description}>{title}</StyledTitle>
+      {title ? <StyledTitle $description={!!description}>{title}</StyledTitle> : null}
       {description ? <StyledDescription>{description}</StyledDescription> : null}
       {children}
     </StyledContainer>

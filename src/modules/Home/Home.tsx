@@ -23,6 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Space } from 'antd';
 import WeddingDetail from '@common/constants/WeddingDetail';
+import HomeCountdown from './components/HomeCountdown/HomeCountdown';
 
 const Home: React.FC = () => {
   const intl = useIntl();
@@ -78,7 +79,9 @@ const Home: React.FC = () => {
           </Space>
         </StyledHeaderContentContainer>
       </StyledHeaderImageContainer>
-      <StyledContentContainer ref={divRef}>{/* todo: content */}</StyledContentContainer>
+      <StyledContentContainer ref={divRef}>
+        <HomeCountdown />
+      </StyledContentContainer>
       <StyledEndingContainer>
         <SectionEndingTitle>{intl.formatMessage({ id: 'home.ending.title' })}</SectionEndingTitle>
 
