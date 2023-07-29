@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { ILayoutOwnState } from '@common/redux/modules/Layout/LayoutInterface';
 
 export interface IAuthModalProps {
+  handleSuccess: () => void;
   handleCancel: () => void;
 }
 
@@ -21,7 +22,7 @@ interface IRegisterFormProps {
   username: string;
 }
 
-const AuthModal: React.FC<IAuthModalProps> = ({ handleCancel }) => {
+const AuthModal: React.FC<IAuthModalProps> = ({ handleSuccess, handleCancel }) => {
   const intl = useIntl();
   const auth = getAuth();
   const { showError } = useErrorMessage();
@@ -40,7 +41,7 @@ const AuthModal: React.FC<IAuthModalProps> = ({ handleCancel }) => {
 
       await setDoc(doc(db, `users/${createdUser.user.uid}`), { ...newUser });
 
-      handleCancel();
+      handleSuccess();
     } catch (error) {
       showError(error);
     }

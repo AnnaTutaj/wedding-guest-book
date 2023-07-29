@@ -50,7 +50,10 @@ const Header: React.FC = () => {
 
   const openRegisterModal = () => {
     setAuthModalConfig({
-      handleCancel: () => setAuthModalConfig(undefined)
+      handleCancel: () => setAuthModalConfig(undefined),
+      handleSuccess: () => {
+        navigate(Paths.Entry);
+      }
     });
   };
 

@@ -55,7 +55,10 @@ const Home: React.FC = () => {
       navigate(Paths.Entry);
     } else {
       setAuthModalConfig({
-        handleCancel: () => setAuthModalConfig(undefined)
+        handleCancel: () => setAuthModalConfig(undefined),
+        handleSuccess: () => {
+          navigate(Paths.Entry);
+        }
       });
     }
   };
