@@ -1,6 +1,7 @@
 import { QueryDocumentSnapshot } from '@firebase/firestore';
 import { db } from '@common/util/firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import { adminIds } from '@common/constants/AdminIds';
 
 export enum Language {
   pl = 'pl',
@@ -16,6 +17,7 @@ export interface IUserModel {
   pictureURL: string;
   username: string;
   language: Language | undefined;
+  isAdmin: boolean;
 }
 
 export interface IUserModelDTO {
@@ -38,11 +40,19 @@ class UserModel implements IUserModel {
     },
     public pictureURL: string,
     public username: string,
-    public language: Language | undefined
+    public language: Language | undefined,
+    public isAdmin: boolean
   ) {}
 
   static build(dto: IUserModelDTO): IUserModel {
-    return new UserModel(dto.id, dto.createdAt, dto.pictureURL || '', dto.username, dto.language);
+    return new UserModel(
+      dto.id,
+      dto.createdAt,
+      dto.pictureURL || '',
+      dto.username,
+      dto.language,
+      adminIds.indexOf(dto.id) > -1
+    );
   }
 
   static converter = {

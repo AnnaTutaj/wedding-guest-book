@@ -91,7 +91,7 @@ const EntryListItem: React.FC<IProps> = ({ entry, removeEntry, updateEntry }) =>
             <StyledCreatedByUsername>{entry.createdByUsername}</StyledCreatedByUsername>
           </Col>
 
-          {entry.createdByUid === userProfile.uid ? (
+          {entry.createdByUid === userProfile.uid || userProfile.isAdmin ? (
             <StyledDropDownCol>
               <StyledDropdown menuItems={menuItems}>
                 <StyledDropdownIconContainer $colorHover={entry.color}>

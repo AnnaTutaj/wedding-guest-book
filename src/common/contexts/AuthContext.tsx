@@ -19,6 +19,7 @@ import UserActions from '@common/redux/UserActions';
 import { useSelector } from 'react-redux';
 import { ILayoutOwnState } from '@common/redux/modules/Layout/LayoutInterface';
 import useErrorMessage from '@common/hooks/useErrorMessage';
+import { adminIds } from '@common/constants/AdminIds';
 
 export enum Language {
   pl = 'pl',
@@ -42,6 +43,7 @@ export interface IUserProfile {
   username: string;
   language: Language | undefined;
   theme: IUserTheme;
+  isAdmin: boolean;
 }
 
 export interface IAuthContext {
@@ -56,7 +58,7 @@ export interface IAuthContext {
   updateProfileSettings: (values: Partial<IUserProfile>) => Promise<void>;
 }
 
-const initUserProfile = {
+const initUserProfile: IUserProfile = {
   uid: '',
   createdAt: {
     nanoseconds: 0,
@@ -65,7 +67,8 @@ const initUserProfile = {
   pictureURL: '',
   username: '',
   language: Language.en,
-  theme: {}
+  theme: {},
+  isAdmin: false
 };
 
 export const AuthContext = createContext<IAuthContext>({
@@ -107,7 +110,8 @@ export default function AuthContextProvider({ children }: any) {
             pictureURL: userSnap.pictureURL || '',
             username: userSnap.username || '',
             language: userSnap?.language || Language.en,
-            theme: userSnap.theme || {}
+            theme: userSnap.theme || {},
+            isAdmin: adminIds.indexOf(user.uid) > -1
           });
         } else {
           setUserProfile({ ...initUserProfile });
@@ -149,7 +153,8 @@ export default function AuthContextProvider({ children }: any) {
         pictureURL: userSnap.pictureURL || '',
         username: userSnap.username || '',
         language: userSnap?.language || Language.en,
-        theme: userSnap.theme || {}
+        theme: userSnap.theme || {},
+        isAdmin: adminIds.indexOf(userAuth.uid) > -1
       });
     }
     setIsUserLoading(false);
