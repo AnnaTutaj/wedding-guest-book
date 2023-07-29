@@ -21,9 +21,10 @@ import aiNarrow from '@assets/aiNarrow.jpg';
 import { buildDate } from '@common/helpers/DateHelper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Space } from 'antd';
+import { Divider, Space } from 'antd';
 import WeddingDetail from '@common/constants/WeddingDetail';
 import HomeCountdown from './components/HomeCountdown/HomeCountdown';
+import HomeCeremony from './components/HomeCeremony/HomeCeremony';
 
 const Home: React.FC = () => {
   const intl = useIntl();
@@ -84,6 +85,8 @@ const Home: React.FC = () => {
       </StyledHeaderImageContainer>
       <StyledContentContainer ref={divRef}>
         <HomeCountdown />
+        <Divider />
+        <HomeCeremony />
       </StyledContentContainer>
       <StyledEndingContainer>
         <SectionEndingTitle>{intl.formatMessage({ id: 'home.ending.title' })}</SectionEndingTitle>
