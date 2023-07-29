@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { User as FirebaseUser } from 'firebase/auth';
 import { Paths } from '@common/constants/Paths';
@@ -20,44 +20,63 @@ const SiteMenu: React.FC<ISiteMenuProps> = ({ isMobile, userAuth, openRegisterMo
 
   useEffect(() => {
     const pathNameParts = location.pathname.split('/');
-    setCurrentKeys([pathNameParts[1]]);
+    setCurrentKeys([pathNameParts[1] || 'witaj']);
   }, [location.pathname]);
 
-  const items = userAuth
-    ? [
-        {
-          key: 'wpisy',
-          label: intl.formatMessage({ id: 'header.entries' }),
-          onClick: () => {
-            navigate(Paths.Entry);
-            if (hideDrawer) {
-              hideDrawer();
+  const items = useMemo(() => {
+    const commonItems = isMobile
+      ? [
+          {
+            key: 'witaj',
+            label: intl.formatMessage({ id: 'header.home' }),
+            onClick: () => {
+              navigate(Paths.Home);
+              if (hideDrawer) {
+                hideDrawer();
+              }
             }
           }
-        },
-        {
-          key: 'album-wspomnien',
-          label: intl.formatMessage({ id: 'header.memories' }),
-          onClick: () => {
-            navigate(Paths.Memories);
-            if (hideDrawer) {
-              hideDrawer();
+        ]
+      : [];
+
+    const itemsByAuth = userAuth
+      ? [
+          {
+            key: 'wpisy',
+            label: intl.formatMessage({ id: 'header.entries' }),
+            onClick: () => {
+              navigate(Paths.Entry);
+              if (hideDrawer) {
+                hideDrawer();
+              }
+            }
+          },
+          {
+            key: 'album-wspomnien',
+            label: intl.formatMessage({ id: 'header.memories' }),
+            onClick: () => {
+              navigate(Paths.Memories);
+              if (hideDrawer) {
+                hideDrawer();
+              }
             }
           }
-        }
-      ]
-    : [
-        {
-          key: 'register',
-          label: intl.formatMessage({ id: 'header.register' }),
-          onClick: () => {
-            openRegisterModal();
-            if (hideDrawer) {
-              hideDrawer();
+        ]
+      : [
+          {
+            key: 'register',
+            label: intl.formatMessage({ id: 'header.register' }),
+            onClick: () => {
+              openRegisterModal();
+              if (hideDrawer) {
+                hideDrawer();
+              }
             }
           }
-        }
-      ];
+        ];
+
+    return [...commonItems, ...itemsByAuth];
+  }, [hideDrawer, intl, isMobile, navigate, openRegisterModal, userAuth]);
 
   return (
     <StyledMenu
