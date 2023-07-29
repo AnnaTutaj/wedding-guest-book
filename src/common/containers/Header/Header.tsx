@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIntl } from 'react-intl';
-import { Grid, Switch } from 'antd';
+import { Divider, Grid, Switch } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import UserAvatar from './components/UserAvatar';
@@ -29,6 +29,7 @@ import {
   StyledMenuDrawerCloseIconContainer
 } from './styled';
 import AuthModal, { IAuthModalProps } from './components/AuthModal/AuthModal';
+import MascotWelcomeImage from './components/MascotWelcomeImage/MascotWelcomeImage';
 
 const { useBreakpoint } = Grid;
 
@@ -109,10 +110,20 @@ const Header: React.FC = () => {
         {!isMobile ? <SiteMenu userAuth={userAuth} openRegisterModal={openRegisterModal} /> : null}
       </StyledLayoutHeader>
 
-      <StyledMenuDrawer placement="right" closable={false} open={isMenuOpen} width="100vw">
+      <StyledMenuDrawer placement="right" closable={false} open={isMenuOpen} width="80vw">
         <StyledMenuDrawerCloseIconContainer onClick={() => setIsMenuOpen(false)}>
           <StyledMenuDrawerCloseIcon icon={faTimes} />
         </StyledMenuDrawerCloseIconContainer>
+        <div
+          onClick={() => {
+            setIsMenuOpen(false);
+            navigate(Paths.Welcome);
+          }}
+          style={{ cursor: 'pointer' }}
+        >
+          <MascotWelcomeImage height={100} />
+        </div>
+        <Divider />
         <SiteMenu
           userAuth={userAuth}
           openRegisterModal={openRegisterModal}
