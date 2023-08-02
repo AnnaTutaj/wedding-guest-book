@@ -12,6 +12,7 @@ export const StyledEmptyImage = styled.img`
   max-width: 100%;
   max-height: 400px;
   object-fit: cover;
+  border-radius: ${({ theme }) => theme.antd.borderRadiusLG}px;
 
   @media (width <= 1600px) {
     max-height: 350px;
@@ -21,4 +22,4 @@ export const StyledEmptyImage = styled.img`
 export const StyledEmptyHeaderText = styled(StyledHeaderText)`
   display: block;
   margin-bottom: 20px;
-`
+`;

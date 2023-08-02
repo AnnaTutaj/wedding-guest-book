@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '@assets/mascot_map.svg';
+import image from '@assets/mascot_void.jpg';
 import { Typography } from 'antd';
 import { useIntl } from 'react-intl';
 import PageLoading from '../PageLoading';

@@ -8,4 +8,5 @@ export const StyledSpace = styled(Space)`
 `;
 export const StyledImage = styled(Image)`
   max-height: 300px;
+  border-radius: ${({ theme }) => theme.antd.borderRadiusLG}px;
 `;

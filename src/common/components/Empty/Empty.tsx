@@ -1,5 +1,5 @@
 import { useIntl } from 'react-intl';
-import image from '@assets/mascot_map.svg';
+import image from '@assets/mascot_void.jpg';
 import { StyledEmpty, StyledEmptyHeaderText, StyledEmptyImage } from './styled';
 
 export interface IEmptyProps {
