@@ -19,7 +19,7 @@ const HomeCeremony: React.FC = () => {
     >
       <StyledContainer>
         <div>{buildDate(WeddingDetail.date).format('LLLL')}</div>
-        <Image style={{ maxHeight: 200 }} src={churchImage} />
+        <Image style={{ maxHeight: 400 }} src={churchImage} preview={false} />
         <div>
           <div>{intl.formatMessage({ id: 'home.ceremony.churchName' })}</div>
           <div>{intl.formatMessage({ id: 'home.ceremony.churchAddress' })}</div>

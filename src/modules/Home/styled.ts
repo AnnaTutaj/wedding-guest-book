@@ -1,4 +1,4 @@
-import { Space } from 'antd';
+import { Divider, Space } from 'antd';
 import styled from 'styled-components';
 const gradientColors = '#74a896, #7caf92, #87b58c, #96ba85, #a8bf7e, #bdc278, #d3c474, #ebc573';
 const homeEndingGradient = `radial-gradient(circle at 10% 80%, ${gradientColors})`;
@@ -65,4 +65,8 @@ export const StyledContentContainer = styled.div`
 export const SectionEndingTitle = styled.div`
   margin-bottom: 20px;
   font-size: 1.7em;
+`;
+
+export const StyledDivider = styled(Divider)`
+  margin: 0;
 `;
