@@ -19,6 +19,7 @@ export interface IEntryFormModelDTO {
   color: CategoryColorType;
   tags: string[];
   imageURLs: string[];
+  userAgent: string;
 }
 
 class EntryFormModel {
@@ -42,7 +43,8 @@ class EntryFormModel {
       createdAt: serverTimestamp(),
       color: color || 'default',
       tags: tags || [],
-      imageURLs: imageURLs || []
+      imageURLs: imageURLs || [],
+      userAgent: window.navigator.userAgent
     };
   }
 

@@ -1,10 +1,10 @@
-import { Col } from 'antd';
+import { Col, Space, Tooltip } from 'antd';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '@common/util/firebase';
 import { IEntryModel } from '@modules/Entry/models/EntryModel';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { useIntl } from 'react-intl';
 import { DropdownMenuKey } from '@common/constants/DropdownMenuKey';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
@@ -78,7 +78,16 @@ const EntryListItem: React.FC<IProps> = ({ entry, removeEntry, updateEntry }) =>
       <StyledListItem $backgroundColor={entry.color}>
         <StyledListItemRow wrap={false}>
           <Col flex={1}>
-            <StyledCreatedAt>{buildDate(miliseconds).format('LLL')}</StyledCreatedAt>
+            <StyledCreatedAt>
+              <Space>
+                {buildDate(miliseconds).format('LLL')}
+                {userProfile.isAdmin ? (
+                  <Tooltip title={`UserAgent: ${entry.userAgent}`}>
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                  </Tooltip>
+                ) : null}
+              </Space>
+            </StyledCreatedAt>
             {/* {entry.imageURLs.length ? <ImagePreview srcs={entry.imageURLs} /> : null} */}
             <StyledContentParagraph>{entry.content}</StyledContentParagraph>
             <StyledTagRow gutter={8}>

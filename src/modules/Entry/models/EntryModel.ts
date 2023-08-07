@@ -16,6 +16,7 @@ export interface IEntryModel {
   color: CategoryColorType;
   tags: string[];
   imageURLs: string[];
+  userAgent: string;
 }
 
 export interface IEntryModelDTO {
@@ -31,6 +32,7 @@ export interface IEntryModelDTO {
   color?: CategoryColorType;
   tags?: string[];
   imageURLs?: string[];
+  userAgent: string;
 }
 
 class EntryModel implements IEntryModel {
@@ -46,7 +48,8 @@ class EntryModel implements IEntryModel {
     public createdByUsername: string,
     public color: CategoryColorType,
     public tags: string[],
-    public imageURLs: string[]
+    public imageURLs: string[],
+    public userAgent: string
   ) {}
 
   static build(dto: IEntryModelDTO): IEntryModel {
@@ -59,7 +62,8 @@ class EntryModel implements IEntryModel {
       dto.createdByUsername,
       dto.color || 'default',
       dto.tags || [],
-      dto.imageURLs || []
+      dto.imageURLs || [],
+      dto.userAgent,
     );
   }
 
