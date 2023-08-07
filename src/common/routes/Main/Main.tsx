@@ -15,6 +15,7 @@ import { StyledContent } from './styled';
 const PageUnderConstruction = lazy(() => import('@common/components/PageUnderConstruction'));
 const Home = lazy(() => import('@modules/Home'));
 const Entry = lazy(() => import('@modules/Entry'));
+const Photo = lazy(() => import('@modules/Photo'));
 
 //todo add route to PageNotFound, AccessDenied
 
@@ -49,15 +50,15 @@ const Main: React.FC = () => {
                   <Entry />
                 </PrivateRoute>
               }
-            ></Route>
+            />
             <Route
-              path={Paths.Memories}
+              path={Paths.Photos}
               element={
                 <PrivateRoute>
-                  <PageUnderConstruction title="Memories page" />
+                  <Photo />
                 </PrivateRoute>
               }
-            ></Route>
+            />
             {/* todo: Create Page Not Found View */}
             <Route path="*" element={<PageUnderConstruction title="Page Not Found" />} />
           </Routes>

@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { Image } from 'antd';
 
 export const ImagePreviewCn = 'ImagePreviewCn';
 
@@ -9,4 +10,10 @@ export const GlobalStyle = createGlobalStyle`
     max-height: ${({ theme }) => `calc(100vh - ${theme.layout.headerHeight} - 10px)`};
     object-fit: cover;
     }
+`;
+
+export const StyledImage = styled(Image)`
+  border-radius: ${({ theme }) => theme.antd.borderRadiusSM}px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
 `;

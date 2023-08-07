@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Image from '../Image/Image';
 import { Image as AntDImage } from 'antd';
-import { GlobalStyle, ImagePreviewCn } from './styled';
+import { GlobalStyle, ImagePreviewCn, StyledImage } from './styled';
 
 export interface IImageProps {
   srcs: string[];
 }
-
+//todo: add group preview
 const ImagePreview: React.FC<IImageProps> = ({ srcs }) => {
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -17,7 +17,7 @@ const ImagePreview: React.FC<IImageProps> = ({ srcs }) => {
   return (
     <>
       <GlobalStyle />
-      <Image
+      <StyledImage
         rootClassName={ImagePreviewCn}
         preview={{ visible: false }}
         src={srcs[0]}
