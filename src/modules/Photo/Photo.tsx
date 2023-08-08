@@ -122,7 +122,7 @@ const Photo: React.FC = () => {
         <h2>{intl.formatMessage({ id: 'photo.googleDriveInfo' })}</h2>
         <Button
           type="primary"
-          style={{ minHeight: '60px' }}
+          style={{ minHeight: '50px' }}
           block
           onClick={() =>
             window.open(
@@ -136,9 +136,8 @@ const Photo: React.FC = () => {
             {intl.formatMessage({ id: 'photo.goToPhotos' })}
           </Space>
         </Button>
-        <Divider>
-          <h2>{intl.formatMessage({ id: 'photo.archivePhotosTitle' })}</h2>
-        </Divider>
+        <Divider />
+        <h2>{intl.formatMessage({ id: 'photo.archivePhotosTitle' })}</h2>
         {/* //todo: add virtual scroll */}
         {photosByYears.map((photosByYear) => (
           <PhotoYear photosByYear={photosByYear} key={photosByYear.year} />

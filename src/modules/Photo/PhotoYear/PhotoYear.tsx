@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import ImagePreview from '@common/components/ImagePreview/ImagePreview';
+import { StyledImage } from './styled';
 
 interface IProps {
   photosByYear: {
@@ -15,7 +15,7 @@ const PhotoYear: React.FC<IProps> = ({ photosByYear }) => {
       <Row gutter={[10, 10]} align="middle" justify="center">
         {photosByYear.urls.map((url, index) => (
           <Col span={12} key={url} style={{ textAlign: index % 2 === 0 ? 'right' : 'left' }}>
-            <ImagePreview srcs={[url]} />
+            <StyledImage src={url} />
           </Col>
         ))}
       </Row>
