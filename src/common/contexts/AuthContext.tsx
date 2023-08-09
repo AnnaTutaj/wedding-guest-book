@@ -103,6 +103,10 @@ export default function AuthContextProvider({ children }: any) {
 
         if (snap.exists()) {
           const userSnap = snap.data();
+          const userRef = doc(db, 'users', user.uid);
+          await updateDoc(userRef, {
+            lastActivity: serverTimestamp()
+          });
 
           setUserProfile({
             uid: user.uid,
