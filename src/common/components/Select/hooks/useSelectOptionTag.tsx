@@ -3,10 +3,9 @@ import { useMemo } from 'react';
 
 const { Option } = Select;
 
-//todo: delete if not needed
 const useSelectOptionTag = () => {
   const selectOptionsTag = useMemo(() => {
-    const allowedTags: string[] = [];
+    const allowedTags: string[] = ['życzenia', 'poradymałżeńskie', 'wspomnienia'];
     return allowedTags.map((tag) => <Option key={tag}>{tag}</Option>);
   }, []);
 
