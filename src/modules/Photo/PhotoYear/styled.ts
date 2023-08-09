@@ -8,4 +8,5 @@ export const StyledImage = styled(Image)`
   max-width: 250px;
   max-height: ${({ theme }) => `calc(100vh - ${theme.layout.headerHeight} - 10px)`};
   object-fit: cover;
+  min-height: 125px;
 `;
