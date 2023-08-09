@@ -11,30 +11,25 @@ const Photo: React.FC = () => {
 
   return (
     <StyledContainer>
-      <Space direction="vertical" size={20}>
-        <h2>{intl.formatMessage({ id: 'photo.googleDriveInfo' })}</h2>
-        <Button
-          type="primary"
-          style={{ minHeight: '50px' }}
-          block
-          onClick={() =>
-            window.open(
-              'https://drive.google.com/drive/folders/1XsxA2Ir_dm4rJIYG90HZM-7ColtqVbeL?usp=sharing',
-              '_blank'
-            )
-          }
-        >
-          <Space>
-            <Image style={{ height: '35px' }} src={googleDriveIcon} preview={false} />
-            {intl.formatMessage({ id: 'photo.goToPhotos' })}
-          </Space>
-        </Button>
-        <Divider />
-        <h2>{intl.formatMessage({ id: 'photo.archivePhotosTitle' })}</h2>
-        {photosByYears.map((photosByYear) => (
-          <PhotoYear photosByYear={photosByYear} key={photosByYear.year} />
-        ))}
-      </Space>
+      <h2>{intl.formatMessage({ id: 'photo.googleDriveInfo' })}</h2>
+      <Button
+        type="primary"
+        style={{ minHeight: '50px', maxWidth: '400px' }}
+        block
+        onClick={() =>
+          window.open('https://drive.google.com/drive/folders/1XsxA2Ir_dm4rJIYG90HZM-7ColtqVbeL?usp=sharing', '_blank')
+        }
+      >
+        <Space>
+          <Image style={{ height: '35px' }} src={googleDriveIcon} preview={false} />
+          {intl.formatMessage({ id: 'photo.goToPhotos' })}
+        </Space>
+      </Button>
+      <Divider />
+      <h2>{intl.formatMessage({ id: 'photo.archivePhotosTitle' })}</h2>
+      {photosByYears.map((photosByYear) => (
+        <PhotoYear photosByYear={photosByYear} key={photosByYear.year} />
+      ))}
     </StyledContainer>
   );
 };
