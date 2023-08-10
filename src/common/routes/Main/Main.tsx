@@ -52,7 +52,7 @@ const Main: React.FC = () => {
               }
             />
             <Route
-              path={Paths.Photos}
+              path={Paths.Photo}
               element={
                 <PrivateRoute>
                   <Photo />

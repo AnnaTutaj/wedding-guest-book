@@ -55,7 +55,7 @@ const SiteMenu: React.FC<ISiteMenuProps> = ({ isMobile, userAuth, openRegisterMo
             key: 'album-wspomnien',
             label: intl.formatMessage({ id: 'header.photos' }),
             onClick: () => {
-              navigate(Paths.Photos);
+              navigate(Paths.Photo);
               if (hideDrawer) {
                 hideDrawer();
               }

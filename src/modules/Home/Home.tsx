@@ -53,7 +53,7 @@ const Home: React.FC = () => {
     }
   };
 
-  const onClick = () => {
+  const goToEntry = () => {
     if (userProfile.uid) {
       navigate(Paths.Entry);
     } else {
@@ -61,6 +61,19 @@ const Home: React.FC = () => {
         handleCancel: () => setAuthModalConfig(undefined),
         handleSuccess: () => {
           navigate(Paths.Entry);
+        }
+      });
+    }
+  };
+
+  const goToPhoto = () => {
+    if (userProfile.uid) {
+      navigate(Paths.Photo);
+    } else {
+      setAuthModalConfig({
+        handleCancel: () => setAuthModalConfig(undefined),
+        handleSuccess: () => {
+          navigate(Paths.Photo);
         }
       });
     }
@@ -75,7 +88,7 @@ const Home: React.FC = () => {
             <StyledHeaderSubtitle>{buildDate(WeddingDetail.date).format('LL')}</StyledHeaderSubtitle>
           </StyledTitleSpace>
           <Space direction="vertical" size="large">
-            <Button type="primary" onClick={onClick} text={intl.formatMessage({ id: 'home.header.button' })} />
+            <Button type="primary" onClick={goToEntry} text={intl.formatMessage({ id: 'home.header.button' })} />
             <Button
               type="primary"
               shape="circle"
@@ -94,10 +107,15 @@ const Home: React.FC = () => {
       </StyledContentContainer>
       <StyledEndingContainer>
         <SectionEndingTitle>{intl.formatMessage({ id: 'home.ending.title' })}</SectionEndingTitle>
-
-        <Button type="primary" onClick={onClick}>
-          {intl.formatMessage({ id: 'home.ending.button' })}
-        </Button>
+        <Space direction="vertical">
+          <Button type="primary" onClick={goToEntry}>
+            {intl.formatMessage({ id: 'home.ending.button.goToEntries' })}
+          </Button>
+          {intl.formatMessage({ id: 'common.or' }).toLocaleLowerCase()}
+          <Button ghost onClick={goToPhoto}>
+            {intl.formatMessage({ id: 'home.ending.button.goToPhotos' })}
+          </Button>
+        </Space>
       </StyledEndingContainer>
 
       {authModalConfig ? <AuthModal {...authModalConfig} /> : null}

@@ -37,6 +37,7 @@ export const StyledEndingContainer = styled.div`
   color: ${({ theme }) => theme.antd.colorWhite};
   text-align: center;
   background: ${homeEndingGradient};
+  gap: 20px;
 `;
 
 export const StyledTitleSpace = styled(Space)`

@@ -4,5 +4,5 @@ export const Paths = {
   AccessDenied: '/access-denied',
   PageNotFound: '/page-not-found',
   Entry: '/wpisy',
-  Photos: '/album-wspomnien',
+  Photo: '/album-wspomnien',
 };
