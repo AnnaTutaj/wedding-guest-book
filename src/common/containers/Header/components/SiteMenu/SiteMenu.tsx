@@ -30,7 +30,7 @@ const SiteMenu: React.FC<ISiteMenuProps> = ({ isMobile, userAuth, openRegisterMo
             key: 'witaj',
             label: intl.formatMessage({ id: 'header.home' }),
             onClick: () => {
-              navigate(Paths.Home);
+              navigate(Paths.Welcome);
               if (hideDrawer) {
                 hideDrawer();
               }
