@@ -10,3 +10,9 @@ export const StyledImage = styled(Image)`
   object-fit: cover;
   min-height: 125px;
 `;
+
+export const StyledYear = styled.div`
+  margin-top: ${({ theme }) => theme.antd.marginLG}px;
+  margin-bottom: ${({ theme }) => theme.antd.marginSM}px;
+  font-size: ${({ theme }) => theme.antd.fontSizeXL}px;
+`;

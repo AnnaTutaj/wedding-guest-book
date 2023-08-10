@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import { StyledImage } from './styled';
+import { StyledImage, StyledYear } from './styled';
 import { IPhotosByYear } from '@common/constants/Photos';
 
 export interface IProps {
@@ -9,7 +9,7 @@ export interface IProps {
 const PhotoYear: React.FC<IProps> = ({ photosByYear }) => {
   return (
     <>
-      <h2>{photosByYear.year}</h2>
+      <StyledYear>{photosByYear.year}</StyledYear>
       <Row gutter={[10, 10]} align="middle" justify="center">
         {photosByYear.images.map((image, index) => (
           <Col span={12} key={image.src} style={{ textAlign: index % 2 === 0 ? 'right' : 'left' }}>
