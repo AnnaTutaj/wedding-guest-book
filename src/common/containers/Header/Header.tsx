@@ -84,7 +84,7 @@ const Header: React.FC = () => {
           <StyledAvatarContainer>
             <Select<ITranslationConfig['locale']>
               style={{ width: 65 }}
-              dropdownMatchSelectWidth={120}
+              popupMatchSelectWidth={120}
               defaultValue={siteLanguage}
               optionLabelProp="label"
               size="middle"
