@@ -1,15 +1,20 @@
-import { Image as AntdImage, ImageProps } from 'antd';
+import { ImageProps } from 'antd';
 import Spinner from '../Spinner';
-import { SpinnerContainer } from './styled';
+import { SpinnerContainer, StyledImage } from './styled';
+import { SpinnerSize } from '../Spinner/Spinner';
 
-const Image: React.FC<ImageProps> = ({ src, ...props }) => {
+export interface IImageProps extends ImageProps {
+  spinnerSize?: SpinnerSize;
+}
+
+const Image: React.FC<IImageProps> = ({ src, spinnerSize = 'middle', ...props }) => {
   return (
-    <AntdImage
+    <StyledImage
       {...props}
       src={src}
       placeholder={
         <SpinnerContainer>
-          <Spinner size="middle" />
+          <Spinner size={spinnerSize} />
         </SpinnerContainer>
       }
     />

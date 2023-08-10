@@ -1,3 +1,4 @@
+import { Image } from 'antd';
 import styled from 'styled-components';
 
 export const SpinnerContainer = styled.div`
@@ -6,3 +7,5 @@ export const SpinnerContainer = styled.div`
   align-items: center;
   height: 100%;
 `;
+
+export const StyledImage = styled(Image)``;

@@ -1,5 +1,5 @@
-import { Col, Image, Row } from 'antd';
-import { StyledImage, StyledYear } from './styled';
+import { Col, Image as AntdImage, Row } from 'antd';
+import { StyledImage, StyledPreviewImage, StyledYear } from './styled';
 import { IPhotosByYear } from '@common/constants/Photos';
 
 export interface IProps {
@@ -11,18 +11,19 @@ const PhotoYear: React.FC<IProps> = ({ photosByYear }) => {
     <>
       <StyledYear>{photosByYear.year}</StyledYear>
       <Row gutter={[10, 10]} align="middle" justify="center">
-        <Image.PreviewGroup>
+        <AntdImage.PreviewGroup
+          preview={{
+            imageRender: (originalNode, info) => (
+              <StyledPreviewImage preview={false} src={photosByYear.images[info.current].src} spinnerSize="large" />
+            )
+          }}
+        >
           {photosByYear.images.map((image, index) => (
             <Col span={12} key={image.src} style={{ textAlign: index % 2 === 0 ? 'right' : 'left' }}>
-              <StyledImage
-                src={image.thumbnailSrc}
-                preview={{
-                  src: image.src
-                }}
-              />
+              <StyledImage src={image.thumbnailSrc} />
             </Col>
           ))}
-        </Image.PreviewGroup>
+        </AntdImage.PreviewGroup>
       </Row>
     </>
   );

@@ -16,3 +16,8 @@ export const StyledYear = styled.div`
   margin-bottom: ${({ theme }) => theme.antd.marginSM}px;
   font-size: ${({ theme }) => theme.antd.fontSizeXL}px;
 `;
+
+export const StyledPreviewImage = styled(Image)`
+  max-height: 90vh;
+  max-width: 100vw;
+`;
