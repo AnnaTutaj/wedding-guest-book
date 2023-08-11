@@ -5,4 +5,5 @@ export const Paths = {
   PageNotFound: '/page-not-found',
   Entry: '/wpisy',
   Photo: '/album-wspomnien',
+  Support: '/wsparcie',
 };

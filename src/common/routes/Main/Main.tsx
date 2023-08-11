@@ -16,6 +16,7 @@ const PageUnderConstruction = lazy(() => import('@common/components/PageUnderCon
 const Home = lazy(() => import('@modules/Home'));
 const Entry = lazy(() => import('@modules/Entry'));
 const Photo = lazy(() => import('@modules/Photo'));
+const Support = lazy(() => import('@modules/Support'));
 
 //todo add route to PageNotFound, AccessDenied
 
@@ -42,7 +43,7 @@ const Main: React.FC = () => {
               }
             />
             <Route path={Paths.Welcome} element={<Home />} />
-            {/* //todo: allow everybody to view */}
+            <Route path={Paths.Support} element={<Support />} />
             <Route
               path={Paths.Entry}
               element={

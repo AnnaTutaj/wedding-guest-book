@@ -6,6 +6,7 @@ import { StyledColorTextLink } from '@common/components/Link/styled';
 import { ThemeContext } from '@common/contexts/Theme/ThemeContext';
 import dayjs from 'dayjs';
 import WeddingDetail from '@common/constants/WeddingDetail';
+import { Paths } from '@common/constants/Paths';
 
 const Footer: React.FC = () => {
   const intl = useIntl();
@@ -37,6 +38,8 @@ const Footer: React.FC = () => {
           </StyledColorTextLink>
         </span>
         <Space size={10}>
+          <StyledColorTextLink to={Paths.Support}>{intl.formatMessage({ id: 'footer.help' })}</StyledColorTextLink>
+          <span>•</span>
           <StyledColorTextLink
             as="a"
             href="https://www.freeprivacypolicy.com/live/90bcffd5-ffa3-40dd-835b-3fe0fd26985f"
