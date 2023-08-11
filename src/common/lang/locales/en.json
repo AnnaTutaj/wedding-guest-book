@@ -55,6 +55,7 @@
   "entry.confirmModal.delete.title": "Delete entry?",
   "entry.create.button": "Add entry",
   "entry.create.title": "Add entry",
+  "entry.createdByAdmin": "Admin entry",
   "entry.form.field.addLink": "Add link",
   "entry.form.field.content": "content",
   "entry.form.field.createdByUsername": "Signature",

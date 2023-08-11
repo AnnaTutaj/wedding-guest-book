@@ -55,6 +55,7 @@
   "entry.confirmModal.delete.title": "Usunąć wpis?",
   "entry.create.button": "Dodaj wpis",
   "entry.create.title": "Dodaj wpis",
+  "entry.createdByAdmin": "Wpis Admina",
   "entry.form.field.addLink": "Dodaj link",
   "entry.form.field.content": "Treść",
   "entry.form.field.createdByUsername": "Podpis",

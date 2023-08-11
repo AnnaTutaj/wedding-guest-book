@@ -19,7 +19,7 @@ import UserActions from '@common/redux/UserActions';
 import { useSelector } from 'react-redux';
 import { ILayoutOwnState } from '@common/redux/modules/Layout/LayoutInterface';
 import useErrorMessage from '@common/hooks/useErrorMessage';
-import { adminIds } from '@common/constants/AdminIds';
+import { isAdmin } from '@common/helpers/UserHelper';
 
 export enum Language {
   pl = 'pl',
@@ -115,7 +115,7 @@ export default function AuthContextProvider({ children }: any) {
             username: userSnap.username || '',
             language: userSnap?.language || Language.en,
             theme: userSnap.theme || {},
-            isAdmin: adminIds.indexOf(user.uid) > -1
+            isAdmin: isAdmin(user.uid)
           });
         } else {
           setUserProfile({ ...initUserProfile });
@@ -158,7 +158,7 @@ export default function AuthContextProvider({ children }: any) {
         username: userSnap.username || '',
         language: userSnap?.language || Language.en,
         theme: userSnap.theme || {},
-        isAdmin: adminIds.indexOf(userAuth.uid) > -1
+        isAdmin: isAdmin(userAuth.uid)
       });
     }
     setIsUserLoading(false);

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '@common/util/firebase';
 import { IEntryModel } from '@modules/Entry/models/EntryModel';
-import { faCircleInfo, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faEllipsisV, faHammer } from '@fortawesome/free-solid-svg-icons';
 import { useIntl } from 'react-intl';
 import { DropdownMenuKey } from '@common/constants/DropdownMenuKey';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
@@ -20,6 +20,7 @@ import {
 } from '@common/components/ListItem/styled';
 import { StyledCreatedAt, StyledCreatedByUsername, StyledTagCol, StyledTagRow } from './styled';
 import { buildDate } from '@common/helpers/DateHelper';
+import { isAdmin } from '@common/helpers/UserHelper';
 
 interface IProps {
   entry: IEntryModel;
@@ -81,6 +82,11 @@ const EntryListItem: React.FC<IProps> = ({ entry, removeEntry, updateEntry }) =>
             <StyledCreatedAt>
               <Space>
                 {buildDate(miliseconds).format('LLL')}
+                {isAdmin(entry.createdByUid) ? (
+                  <Tooltip title={intl.formatMessage({ id: 'entry.createdByAdmin' })}>
+                    <FontAwesomeIcon icon={faHammer} />
+                  </Tooltip>
+                ) : null}
                 {userProfile.isAdmin ? (
                   <Tooltip title={`UserAgent: ${entry.userAgent}`}>
                     <FontAwesomeIcon icon={faCircleInfo} />
