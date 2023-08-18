@@ -7,10 +7,12 @@ import Dropdown from '@common/components/Dropdown';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
 import { faCog, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { StyledAvatar } from './styled';
+import { useUserProfile } from '@common/contexts/UserProfile/UserProfileContext';
 
 const UserAvatar: React.FC = () => {
   const intl = useIntl();
-  const { logout, userProfile } = useAuth();
+  const { logout } = useAuth();
+  const { userProfile } = useUserProfile();
   const [settingsModalConfig, setSettingsModalConfig] = useState<ISettingsModalProps>();
 
   const menuItems: DropdownMenuItemProps = [

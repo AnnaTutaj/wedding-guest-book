@@ -5,7 +5,7 @@ import { Divider, Grid, Switch } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import UserAvatar from './components/UserAvatar';
-import { Language, useAuth } from '@common/contexts/AuthContext';
+import { useAuth } from '@common/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '@common/constants/Paths';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
@@ -30,6 +30,7 @@ import {
 } from './styled';
 import AuthModal, { IAuthModalProps } from './components/AuthModal/AuthModal';
 import MascotWelcomeImage from './components/MascotWelcomeImage/MascotWelcomeImage';
+import { Language } from '@common/constants/Language';
 
 const { useBreakpoint } = Grid;
 

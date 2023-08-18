@@ -9,7 +9,7 @@ import { useIntl } from 'react-intl';
 import { DropdownMenuKey } from '@common/constants/DropdownMenuKey';
 import { DropdownMenuItemProps } from '@common/components/Dropdown/Dropdown';
 import useConfirmModal from '@common/hooks/useConfirmModal';
-import { useAuth } from '@common/contexts/AuthContext';
+import { useUserProfile } from '@common/contexts/UserProfile/UserProfileContext';
 import {
   StyledContentParagraph,
   StyledDropDownCol,
@@ -30,7 +30,7 @@ interface IProps {
 
 const EntryListItem: React.FC<IProps> = ({ entry, removeEntry, updateEntry }) => {
   const intl = useIntl();
-  const { userProfile } = useAuth();
+  const { userProfile } = useUserProfile();
 
   const { confirmModal, confirmModalContextHolder } = useConfirmModal();
 

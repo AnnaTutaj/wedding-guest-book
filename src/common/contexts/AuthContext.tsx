@@ -20,35 +20,11 @@ import { useSelector } from 'react-redux';
 import { ILayoutOwnState } from '@common/redux/modules/Layout/LayoutInterface';
 import useErrorMessage from '@common/hooks/useErrorMessage';
 import { isAdmin } from '@common/helpers/UserHelper';
-
-export enum Language {
-  pl = 'pl',
-  en = 'en'
-}
-
-export interface IUserTheme {
-  colorPrimary?: string;
-  secondaryColor?: string;
-  colorCategoryDefault?: string;
-  colorCategoryDefaultHover?: string;
-}
-
-export interface IUserProfile {
-  uid: string;
-  createdAt: {
-    nanoseconds: number;
-    seconds: number;
-  };
-  pictureURL: string;
-  username: string;
-  language: Language | undefined;
-  theme: IUserTheme;
-  isAdmin: boolean;
-}
+import { IUserProfile, initUserProfile, useUserProfile } from './UserProfile/UserProfileContext';
+import { Language } from '@common/constants/Language';
 
 export interface IAuthContext {
   userAuth: FirebaseUser | null;
-  userProfile: IUserProfile;
   isUserLoading: boolean;
   signInWithGoogle: () => void;
   signInWithFacebook: () => void;
@@ -58,22 +34,8 @@ export interface IAuthContext {
   updateProfileSettings: (values: Partial<IUserProfile>) => Promise<void>;
 }
 
-const initUserProfile: IUserProfile = {
-  uid: '',
-  createdAt: {
-    nanoseconds: 0,
-    seconds: 0
-  },
-  pictureURL: '',
-  username: '',
-  language: Language.en,
-  theme: {},
-  isAdmin: false
-};
-
 export const AuthContext = createContext<IAuthContext>({
   userAuth: null,
-  userProfile: { ...initUserProfile },
   isUserLoading: false,
   signInWithGoogle: () => {},
   signInWithFacebook: () => {},
@@ -90,7 +52,7 @@ export default function AuthContextProvider({ children }: any) {
 
   const siteLanguage = useSelector(({ layout }: ILayoutOwnState) => layout.siteLanguage);
   const [userAuth, setUserAuth] = useState<FirebaseUser | null>(null);
-  const [userProfile, setUserProfile] = useState<IUserProfile>({ ...initUserProfile });
+  const { setUserProfile } = useUserProfile();
   const [isUserLoading, setIsUserLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -222,7 +184,6 @@ export default function AuthContextProvider({ children }: any) {
 
   const value = {
     userAuth,
-    userProfile,
     isUserLoading,
     signInWithGoogle,
     signInWithFacebook,

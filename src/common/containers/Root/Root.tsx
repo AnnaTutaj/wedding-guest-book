@@ -4,14 +4,17 @@ import { BrowserRouter } from 'react-router-dom';
 import App from '@common/containers/App';
 import moduleStore from '@common/redux/moduleStore';
 import ThemeProvider from '@common/contexts/Theme/ThemeProvider';
+import UserProfileProvider from '@common/contexts/UserProfile/UserProfileProvider';
 
 const Root: React.FC = () => {
   return (
     <Provider store={moduleStore}>
       <ThemeProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <UserProfileProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </UserProfileProvider>
       </ThemeProvider>
     </Provider>
   );

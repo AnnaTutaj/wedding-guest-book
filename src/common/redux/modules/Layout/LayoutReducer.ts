@@ -1,4 +1,4 @@
-import { Language } from '@common/contexts/AuthContext';
+import { Language } from '@common/constants/Language';
 import { produce } from 'immer';
 import { LayoutDispatchUnion } from './LayoutActions';
 import { ILayoutState } from './LayoutInterface';

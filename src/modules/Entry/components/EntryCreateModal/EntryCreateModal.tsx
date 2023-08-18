@@ -2,7 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@common/util/firebase';
-import { useAuth } from '@common/contexts/AuthContext';
+import { useUserProfile } from '@common/contexts/UserProfile/UserProfileContext';
 import EntryFormModel, { IEntryFormModel } from '@modules/Entry/models/EntryFormModel';
 import EntryForm from '@modules/Entry/components/EntryForm';
 import useErrorMessage from '@common/hooks/useErrorMessage';
@@ -14,7 +14,7 @@ export interface IEntryCreateModalProps {
 
 const EntryCreateModal: React.FC<IEntryCreateModalProps> = ({ handleSubmit, handleCancel }) => {
   const intl = useIntl();
-  const { userProfile } = useAuth();
+  const { userProfile } = useUserProfile();
   const { showError } = useErrorMessage();
 
   const onFinish = async (values: IEntryFormModel) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { useAuth } from '@common/contexts/AuthContext';
+import { useUserProfile } from '@common/contexts/UserProfile/UserProfileContext';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '@common/constants/Paths';
 import Button from '@common/components/Button';
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
   const [authModalConfig, setAuthModalConfig] = useState<IAuthModalProps>();
   const divRef = useRef<HTMLDivElement>(null);
 
-  const { userProfile } = useAuth();
+  const { userProfile } = useUserProfile();
 
   useEffect(() => {
     LayoutActions.setHidePaddingAction(true)(dispatch);
