@@ -91,7 +91,7 @@ export default function AuthContextProvider({ children }: any) {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [setUserProfile]);
 
   const login = (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
