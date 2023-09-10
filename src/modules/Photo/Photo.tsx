@@ -17,7 +17,7 @@ const Photo: React.FC = () => {
         style={{ minHeight: '50px', maxWidth: '400px' }}
         block
         onClick={() =>
-          window.open('https://drive.google.com/drive/folders/1XsxA2Ir_dm4rJIYG90HZM-7ColtqVbeL?usp=sharing', '_blank')
+          window.open('https://drive.google.com/drive/folders/1J8EFZYCxxVEyMubLDW8EXflRrCwrRNIy', '_blank')
         }
       >
         <Space>
